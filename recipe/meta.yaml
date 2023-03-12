@@ -1,4 +1,4 @@
-{% set version = "0.10.0" %}
+{% set version = "0.11.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,18 +10,25 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/marginaleffects_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/marginaleffects/marginaleffects_{{ version }}.tar.gz
-  sha256: c13299a59feca726ff8aaa788fd3286b32a0d6a34c63a680919687290ecd3b5a
+  sha256: 9a81babe0628c31d6c46aa6b83e59bd023622c005b9b3d0388e42ff47f3fcea7
 
 build:
   merge_build_host: true  # [win]
   number: 0
-  noarch: generic
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
+    - {{ compiler('c') }}          # [not win]
+    - {{ compiler('m2w64_c') }}    # [win]
+    - {{ compiler('cxx') }}        # [not win]
+    - {{ compiler('m2w64_cxx') }}  # [win]
+    - {{ posix }}filesystem        # [win]
+    - {{ posix }}make
+    - {{ posix }}sed               # [win]
+    - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
     - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
@@ -29,13 +36,18 @@ requirements:
     - r-checkmate
     - r-data.table
     - r-generics
-    - r-insight >=0.17.1
+    - r-insight >=0.19.0
+    - r-rcpp >=1.0.10
+    - r-rcppeigen
   run:
     - r-base
+    - {{ native }}gcc-libs         # [win]
     - r-checkmate
     - r-data.table
     - r-generics
-    - r-insight >=0.17.1
+    - r-insight >=0.19.0
+    - r-rcpp >=1.0.10
+    - r-rcppeigen
 
 test:
   commands:
@@ -43,7 +55,8 @@ test:
     - "\"%R%\" -e \"library('marginaleffects')\""  # [win]
 
 about:
-  home: https://vincentarelbundock.github.io/marginaleffects/ https://github.com/vincentarelbundock/marginaleffects
+  home: https://vincentarelbundock.github.io/marginaleffects/
+  dev_url: https://github.com/vincentarelbundock/marginaleffects
   license: GPL-3.0-or-later
   summary: Compute, summarize, and plot marginal effects, adjusted predictions, contrasts, and marginal means for a wide variety of models.
   license_family: GPL3
