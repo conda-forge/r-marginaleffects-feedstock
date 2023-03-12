@@ -21,6 +21,13 @@ build:
 
 requirements:
   build:
+    - cross-r-base {{ r_base }}  # [build_platform != target_platform]
+    - r-checkmate                # [build_platform != target_platform]
+    - r-rcpp                     # [build_platform != target_platform]
+    - r-generics                 # [build_platform != target_platform]
+    - r-data.table               # [build_platform != target_platform]
+    - r-insight                  # [build_platform != target_platform]
+    - r-rcppeigen                # [build_platform != target_platform]
     - {{ compiler('c') }}          # [not win]
     - {{ compiler('m2w64_c') }}    # [win]
     - {{ compiler('cxx') }}        # [not win]
