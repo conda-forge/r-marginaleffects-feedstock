@@ -1,4 +1,4 @@
-{% set version = "0.10.0" %}
+{% set version = "0.11.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/marginaleffects_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/marginaleffects/marginaleffects_{{ version }}.tar.gz
-  sha256: c13299a59feca726ff8aaa788fd3286b32a0d6a34c63a680919687290ecd3b5a
+  sha256: 9a81babe0628c31d6c46aa6b83e59bd023622c005b9b3d0388e42ff47f3fcea7
 
 build:
   merge_build_host: true  # [win]
