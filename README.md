@@ -3,6 +3,7 @@ About r-marginaleffects-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-marginaleffects-feedstock/blob/main/LICENSE.txt)
 
+
 About r-marginaleffects
 -----------------------
 
@@ -13,6 +14,7 @@ Package license: GPL-3.0-or-later
 Summary: Compute, summarize, and plot marginal effects, adjusted predictions, contrasts, and marginal means for a wide variety of models.
 
 Development: https://github.com/vincentarelbundock/marginaleffects
+
 About r-marginaleffects
 -----------------------
 
