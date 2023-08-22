@@ -28,7 +28,7 @@ requirements:
     - r-data.table               # [build_platform != target_platform]
     - r-generics                 # [build_platform != target_platform]
     - r-insight                  # [build_platform != target_platform]
-    - r-rlang                    # [build_platform != target_platform]    
+    - r-rlang                    # [build_platform != target_platform]
     - {{ compiler('c') }}          # [not win]
     - {{ compiler('m2w64_c') }}    # [win]
     - {{ compiler('cxx') }}        # [not win]
