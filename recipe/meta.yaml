@@ -22,12 +22,13 @@ build:
 requirements:
   build:
     - cross-r-base {{ r_base }}  # [build_platform != target_platform]
-    - r-checkmate                # [build_platform != target_platform]
     - r-rcpp                     # [build_platform != target_platform]
-    - r-generics                 # [build_platform != target_platform]
-    - r-data.table               # [build_platform != target_platform]
-    - r-insight                  # [build_platform != target_platform]
     - r-rcppeigen                # [build_platform != target_platform]
+    - r-checkmate                # [build_platform != target_platform]
+    - r-data.table               # [build_platform != target_platform]
+    - r-generics                 # [build_platform != target_platform]
+    - r-insight                  # [build_platform != target_platform]
+    - r-rlang                    # [build_platform != target_platform]    
     - {{ compiler('c') }}          # [not win]
     - {{ compiler('m2w64_c') }}    # [win]
     - {{ compiler('cxx') }}        # [not win]
@@ -40,21 +41,23 @@ requirements:
     - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
+    - r-rcpp >=1.0.10
+    - r-rcppeigen
     - r-checkmate
     - r-data.table
     - r-generics
-    - r-insight >=0.19.0
-    - r-rcpp >=1.0.10
-    - r-rcppeigen
+    - r-insight >=0.19.1
+    - r-rlang
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
+    - r-rcpp >=1.0.10
+    - r-rcppeigen
     - r-checkmate
     - r-data.table
     - r-generics
-    - r-insight >=0.19.0
-    - r-rcpp >=1.0.10
-    - r-rcppeigen
+    - r-insight >=0.19.1
+    - r-rlang
 
 test:
   commands:
