@@ -20,8 +20,10 @@ build:
 requirements:
   build:
     - cross-r-base {{ r_base }}  # [build_platform != target_platform]
+    - r-formula                  # [build_platform != target_platform]
     - r-rcpp                     # [build_platform != target_platform]
     - r-rcppeigen                # [build_platform != target_platform]
+    - r-backports                # [build_platform != target_platform]
     - r-checkmate                # [build_platform != target_platform]
     - r-data.table               # [build_platform != target_platform]
     - r-generics                 # [build_platform != target_platform]
@@ -38,24 +40,27 @@ requirements:
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
-    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
-    - r-rcpp >=1.0.10
+    - r-formula
+    - r-rcpp >=1.0.0
     - r-rcppeigen
+    - r-backports
     - r-checkmate
-    - r-data.table
+    - r-data.table >=1.16.4
     - r-generics
-    - r-insight >=0.19.1
+    - r-insight >=0.20.3
     - r-rlang
   run:
     - r-base
-    - r-rcpp >=1.0.10
+    - r-formula
+    - r-rcpp >=1.0.0
     - r-rcppeigen
+    - r-backports
     - r-checkmate
-    - r-data.table
+    - r-data.table >=1.16.4
     - r-generics
-    - r-insight >=0.19.1
+    - r-insight >=0.20.3
     - r-rlang
 
 test:
