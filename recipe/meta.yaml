@@ -1,4 +1,4 @@
-{% set version = "0.25.1" %}
+{% set version = "0.27.0" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/marginaleffects_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/marginaleffects/marginaleffects_{{ version }}.tar.gz
-  sha256: a4d7b55750797d310a439215b1547c861cac9f066d247a1be02601f287206b86
+  sha256: 3f764b6b6558c25aef68e3cc6f7ca46bc477df64aae856541d946add245545ba
 
 build:
   number: 0
