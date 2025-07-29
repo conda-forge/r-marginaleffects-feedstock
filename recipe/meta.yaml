@@ -1,4 +1,4 @@
-{% set version = "0.25.1" %}
+{% set version = "0.28.0" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,13 +9,17 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/marginaleffects_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/marginaleffects/marginaleffects_{{ version }}.tar.gz
-  sha256: a4d7b55750797d310a439215b1547c861cac9f066d247a1be02601f287206b86
+  sha256: ccdcfba1db6e3325fcc63592ac0afdf0720b1b09992cafda9f7409c6971611f4
 
 build:
   number: 0
   rpaths:
     - lib/R/lib/
     - lib/
+  missing_dso_whitelist:
+    - '*/R.dll'        # [win]
+    - '*/Rblas.dll'    # [win]
+    - '*/Rlapack.dll'  # [win]
 
 requirements:
   build:
@@ -49,7 +53,7 @@ requirements:
     - r-checkmate
     - r-data.table >=1.16.4
     - r-generics
-    - r-insight >=0.20.3
+    - r-insight >=1.3.0
     - r-rlang
   run:
     - r-base
@@ -60,7 +64,7 @@ requirements:
     - r-checkmate
     - r-data.table >=1.16.4
     - r-generics
-    - r-insight >=0.20.3
+    - r-insight >=1.3.0
     - r-rlang
 
 test:
